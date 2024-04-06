@@ -7,7 +7,10 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup as bs
 from utilities import get_fpage, login_f, get_league, \
                       clean_fantrax, save_fantrax
+from get_data import get_avail_players
+from reorg_excel import reorg_excel
 
+get_avail_players()
 peeps = f'newui/fantasy/teamInfo.go?leagueId={get_league()}'
 driver = login_f()
 get_fpage(driver, peeps)
@@ -22,7 +25,8 @@ for plyr in tlist:
     driver.close()
     time.sleep(5)
     driver = login_f()
-    driver.get(f"https://www.fantrax.com/fantasy/league/{get_league()}/team/owners")
+    driver.get(
+        f"https://www.fantrax.com/fantasy/league/{get_league()}/team/owners")
     print(plyr)
     time.sleep(5)
     linkv = driver.find_element(By.PARTIAL_LINK_TEXT, plyr)
@@ -36,3 +40,4 @@ for plyr in tlist:
     save_fantrax(f'{outcsv}.csv')
     time.sleep(5)
 driver.quit()
+reorg_excel()
