@@ -34,6 +34,7 @@ def reorg_excel():
         team_tab = team.split('.')[0]
         excelf = '.'.join([team_tab, "xlsx"])
         df1.to_excel(excelf, sheet_name='Batting', index=False)
+        # pylint: disable=abstract-class-instantiated
         with pd.ExcelWriter(excelf, engine='openpyxl', mode='a') as writer:
             df2.to_excel(writer, sheet_name='Pitching', index=False)
         os.remove(team)

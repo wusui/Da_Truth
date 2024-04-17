@@ -37,27 +37,19 @@ def login_f():
     time.sleep(2)
     return driver
 
-def get_league():
+def get_config(param):
     """
-    Return the fantrax league id
-    """
-    confg = configparser.ConfigParser()
-    confg.read('gnus.ini')
-    return confg['DEFAULT']['league']
-
-def get_download_dir():
-    """
-    Return the fantrax league id
+    Return configuration parameter
     """
     confg = configparser.ConfigParser()
     confg.read('gnus.ini')
-    return confg['DEFAULT']['downloaddir']
+    return confg['DEFAULT'][param]
 
 def get_fantrax():
     """
     Find all downloaded fantrax files
     """
-    dloads = get_download_dir()
+    dloads = get_config('downloaddir')
     ffiles = os.listdir(dloads)
     fnames = list(filter(lambda a: a.find('Fantrax') >= 0, ffiles))
     if not fnames:

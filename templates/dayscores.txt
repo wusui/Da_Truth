@@ -1,0 +1,23 @@
+<html>
+    <head>
+    <title>{{jtitle}}</title>
+    <style>
+        h1, tr, div, p, td {
+        text-align: center;
+        font-weight: bold;
+        font-family: Arial,sans-serif;}
+    table {
+        margin-left: auto;
+        margin-right: auto;}
+    </style>
+    </head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <body>
+    <center>
+{{batdata}}
+<br>
+<br>
+{{pitdata}}
+    </center>
+    </body>
+</html>
